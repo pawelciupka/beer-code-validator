@@ -1,11 +1,11 @@
 import React from 'react';
 import './styles/App.css';
-import CodeValidator from './components/codeValidator';
+import Container from './components/container';
 
 function App() {
   return (
     <div className="App">
-      <CodeValidator/>
+      <Container/>
     </div>
   );
 }

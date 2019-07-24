@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Quagga from "quagga";
 
 class Scanner extends React.Component {
@@ -7,15 +6,13 @@ class Scanner extends React.Component {
     super(props);
 
     this.state = {
-      results: []
+      result: ""
     };
 
-    this.codeDetected = this.codeDetected.bind(this);
-
+    this._onDetected = this._onDetected.bind(this);
   }
 
   componentDidMount() {
-    console.log(this.props.detectedFunc);
     Quagga.init(
       {
         inputStream: {
@@ -36,25 +33,24 @@ class Scanner extends React.Component {
         Quagga.start();
       }
     );
-    Quagga.onDetected(this.codeDetected);
+    Quagga.onDetected(this._onDetected);
   }
 
   render() {
     return (
       <>
+        <div>
+          <p>{this.state.result}</p>
+        </div>
         <div id="cam-container" />
       </>
     );
   }
 
-  codeDetected(result) {
-    this.setState({ results: this.state.results.concat([result]) });
-    console.log(result);
+  _onDetected(result) {
+    console.log(result.codeResult.code);
+    this.setState({ result: result.codeResult.code });
   }
 }
-
-Scanner.propTypes = {
-  detectedFunc: PropTypes.func
-};
 
 export default Scanner;
