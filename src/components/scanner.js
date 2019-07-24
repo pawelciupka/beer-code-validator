@@ -1,5 +1,6 @@
 import React from "react";
 import Quagga from "quagga";
+import Summary from "./summary";
 
 class Scanner extends React.Component {
   constructor(props) {
@@ -39,10 +40,8 @@ class Scanner extends React.Component {
   render() {
     return (
       <>
-        <div>
-          <p>{this.state.result}</p>
-        </div>
         <div id="cam-container" />
+        <Summary code={this.state.result}/>
       </>
     );
   }

@@ -16,7 +16,7 @@ class Container extends React.Component {
     return (
       <div>
         <button onClick={this.startScanning}>
-          {this.state.isScanning ? "Stop" : "Start"}
+          {this.state.isScanning ? "Zakończ skanowanie" : "Rozpocznij skanowanie"}
         </button>
         {this.state.isScanning ? <Scanner /> : null}
       </div>
