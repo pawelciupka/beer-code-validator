@@ -2,8 +2,13 @@
   text-align: center;
 }
 
+#cam-container {
+  display: flex;
+  justify-content: center;
+}
+
 #cam-container video {
-  width: 100vw;
+  width: 80%;
 }
 
 .drawingBuffer {

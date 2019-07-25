@@ -1,7 +1,9 @@
 import React from "react";
 import Scanner from "./scanner";
+import { Button } from "react-bootstrap";
 
-class Container extends React.Component {
+
+class ScannerContainer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -14,12 +16,14 @@ class Container extends React.Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.startScanning}>
-          {this.state.isScanning ? "Zakończ skanowanie" : "Rozpocznij skanowanie"}
-        </button>
+      <>
+        <Button variant="primary" onClick={this.startScanning}>
+          {this.state.isScanning
+            ? "Zakończ skanowanie"
+            : "Rozpocznij skanowanie"}
+        </Button>
         {this.state.isScanning ? <Scanner /> : null}
-      </div>
+      </>
     );
   }
 
@@ -28,4 +32,4 @@ class Container extends React.Component {
   }
 }
 
-export default Container;
+export default ScannerContainer;

@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+import { Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 
 class Summary extends React.Component {
@@ -6,26 +8,59 @@ class Summary extends React.Component {
     super(props);
 
     this.state = {
-      isScanning: false
+      code: "",
+      isExist: null,
+      bgColor: "#ffffff"
     };
+
+    this.addCode = this.addCode.bind(this);
+  }
+
+  componentWillReceiveProps() {
+    this.setState({ code: this.props.code });
+    this.setState({ isExist: this.props.isExist });
+
+    if(this.props.isExist) {
+      this.setState({ bgColor: "red" });
+    } else {
+      this.setState({ bgColor: "green" });
+    }
+  }
+
+  addCode() {
+    if (this.state.isExist === false) {
+      console.log("ADD CODE");
+      axios({
+        url: "api/code/create",
+        method: "post",
+        data: {
+          code: this.state.code
+        }
+      });
+    } else {
+      console.log("CODE EXIST IN DB");
+    }
+    this.setState({ code: "" });
   }
 
   render() {
     return (
-      <>
-        <h2>{this.props.code}</h2>
+      <div style={{backgroundColor: this.state.bgColor}}>
+        <h2>{this.state.code}</h2>
         <p>Sprzedałeś piwo?</p>
-        <button>Tak</button>
-        <button>Nie</button>
-      </>
+        <Button variant="success" onClick={this.addCode}>
+          Tak
+        </Button>
+        <Button variant="danger">
+          Nie
+        </Button>
+      </div>
     );
   }
-
 }
 
-
 Summary.propTypes = {
-    code: PropTypes.string.isRequired
-  };
+  code: PropTypes.string.isRequired
+};
 
 export default Summary;

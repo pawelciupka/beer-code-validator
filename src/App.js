@@ -1,12 +1,13 @@
-import React from 'react';
-import './styles/App.css';
-import Container from './components/container';
+import React from "react";
+import "./styles/App.css";
+import { Container } from "react-bootstrap";
+import Main from "./components/main";
 
 function App() {
   return (
-    <div className="App">
-      <Container/>
-    </div>
+    <Container>
+      <Main />
+    </Container>
   );
 }
 
