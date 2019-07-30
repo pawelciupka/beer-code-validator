@@ -19,7 +19,7 @@
   },
   "scripts": {    
     "start": "node server",
-    "heroku-postbuild": "cd npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "repository": {
     "type": "git",
