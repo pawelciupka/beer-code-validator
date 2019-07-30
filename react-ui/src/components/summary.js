@@ -9,7 +9,7 @@ class Summary extends React.Component {
 
     this.state = {
       code: "",
-      isExist: null,
+      isExist: false,
       bgColor: "#ffffff"
     };
 

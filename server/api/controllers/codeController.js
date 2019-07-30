@@ -5,9 +5,7 @@ module.exports = {
   create: function(req, res) {
     const id = mongoose.Types.ObjectId();
 
-    console.log("_______________________________________");
     console.log("Code: " + req.body.code);
-    console.log("_______________________________________");
 
     const code = new Code({
       _id: id,
@@ -27,7 +25,8 @@ module.exports = {
   },
 
   get: function(req, res) {
-    let code = req.body.code;
+    console.log("Code:" + req.query.code);
+    let code = req.query.code;
     Code.findOne({ code: code })
       .then(code => {
         res.send(code);

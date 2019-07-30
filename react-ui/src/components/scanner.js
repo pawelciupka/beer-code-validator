@@ -8,8 +8,8 @@ class Scanner extends React.Component {
     super(props);
 
     this.state = {
-      result: "",
-      codeObj: null,
+      code: "",
+      codeId: "",
       isExist: false
     };
 
@@ -41,37 +41,23 @@ class Scanner extends React.Component {
   }
 
   validateCode() {
-    this.setState({ codeObj: null });
-
+    this.setState({ codeId: "" });
     return axios
       .get("/api/code/get", {
-        data: {
-          code: this.state.result
+        params: {
+          code: this.state.code
         }
       })
       .then(res => {
-        console.log("2. server response:" + res.data);
-        this.setState({ codeObj: res.data });
+        this.setState({ codeId: res.data._id });
       });
-
-    // axios({
-    //   url: "api/code/get",
-    //   method: "get",
-    //   data: {
-    //     code: this.state.result
-    //   }
-    // }).then(res => {
-    //   this.setState({ codeObj: res.data });
-    // });
   }
 
   _onDetected(result) {
-    this.setState({ result: result.codeResult.code });
+    this.setState({ code: result.codeResult.code });
+
     this.validateCode().then(result => {
-      console.log("code: " + this.state.result);
-      console.log("result: " + result);
-      console.log("codeObj: " + this.state.codeObj);
-      if (this.state.codeObj === null) {
+      if (this.state.codeId == null) {
         this.setState({ isExist: false });
       } else {
         this.setState({ isExist: true });
@@ -83,7 +69,7 @@ class Scanner extends React.Component {
     return (
       <>
         <div id="cam-container" />
-        <Summary code={this.state.result} isExist={this.state.isExist} />
+        <Summary code={this.state.code} isExist={this.state.isExist} />
       </>
     );
   }

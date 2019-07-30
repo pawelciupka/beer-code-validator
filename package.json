@@ -1,45 +1,37 @@
 {
   "name": "beer-code-validator",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "axios": "^0.19.0",
-    "body-parser": "^1.19.0",
-    "bootstrap": "^4.3.1",
-    "express": "^4.17.1",
-    "mongoose": "^5.6.6",
-    "morgan": "^1.9.1",
-    "nodemon": "^1.19.1",
-    "path": "^0.12.7",
-    "quagga": "^0.12.1",
-    "react": "^16.8.6",
-    "react-bootstrap": "^1.0.0-beta.10",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+  "version": "1.0.0",
+  "description": "Application created for Summer Boom Festival",
+  "engines": {
+    "node": "10.x"
   },
-  "scripts": {    
+  "scripts": {
     "start": "node server",
-    "heroku-postbuild": "npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "react-ui/node_modules"
+  ],
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-recaptcha": "^4.1.1",
+    "mongoose": "^5.4.1",
+    "morgan": "^1.9.1",
+    "nodemailer": "^5.0.0",
+    "package-name": "^0.1.0",
+    "react-router-dom": "^4.3.1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pawelciupka/beer-code-validator"
+    "url": "https://github.com/PawelCiupka/beer-code-validator"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not ie <= 11",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }, 
-  "proxy": "http://localhost:5000"
+  "keywords": [
+    "node",
+    "heroku",
+    "create-react-app",
+    "react"
+  ],
+  "devDependencies": {}
 }
