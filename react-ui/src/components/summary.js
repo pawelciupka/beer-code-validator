@@ -45,6 +45,9 @@ class Summary extends React.Component {
       });
     }
     this.setState({ code: "" });
+    this.setState({ bgColor: "rgba(255, 255, 255, 0)" });
+    this.setState({ summaryMessage: "Kod został dodany do bazy" });
+    this.setState({ display: "none" });
   }
 
   cancelCode() {
