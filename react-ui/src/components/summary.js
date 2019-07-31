@@ -10,26 +10,32 @@ class Summary extends React.Component {
     this.state = {
       code: "",
       isExist: false,
-      bgColor: "#ffffff"
+      bgColor: "rgba(255, 255, 255, 0)",
+      summaryMessage: "",
+      display: "none"
     };
 
     this.addCode = this.addCode.bind(this);
+    this.cancelCode = this.cancelCode.bind(this);
   }
 
   componentWillReceiveProps() {
     this.setState({ code: this.props.code });
     this.setState({ isExist: this.props.isExist });
 
-    if(this.props.isExist) {
+    if (this.props.isExist) {
       this.setState({ bgColor: "red" });
+      this.setState({ summaryMessage: "Nie możesz sprzedać piwa" });
+      this.setState({ display: "none" });
     } else {
       this.setState({ bgColor: "green" });
+      this.setState({ summaryMessage: "Chcesz sprzedać piwo?" });
+      this.setState({ display: "flex" });
     }
   }
 
   addCode() {
     if (this.state.isExist === false) {
-      console.log("ADD CODE");
       axios({
         url: "api/code/create",
         method: "post",
@@ -37,23 +43,42 @@ class Summary extends React.Component {
           code: this.state.code
         }
       });
-    } else {
-      console.log("CODE EXIST IN DB");
     }
     this.setState({ code: "" });
   }
 
+  cancelCode() {
+    this.setState({ code: "" });
+    this.setState({ isExist: false });
+    this.setState({ bgColor: "rgba(255, 255, 255, 0)" });
+    this.setState({ summaryMessage: "" });
+    this.setState({ display: "none" });
+  }
+
   render() {
     return (
-      <div style={{backgroundColor: this.state.bgColor}}>
-        <h2>{this.state.code}</h2>
-        <p>Sprzedałeś piwo?</p>
-        <Button variant="success" onClick={this.addCode}>
-          Tak
-        </Button>
-        <Button variant="danger">
-          Nie
-        </Button>
+      <div className="summary-container">
+        <div className="code-container">
+          <span>{this.state.code}</span>
+        </div>
+        <div
+          className="summary-result"
+          style={{ backgroundColor: this.state.bgColor }}
+        >
+          <p className="summary-message">{this.state.summaryMessage}</p>
+
+          <div
+            className="summary-btn-container"
+            style={{ display: this.state.display }}
+          >
+            <Button variant="success" onClick={this.addCode}>
+              Tak
+            </Button>
+            <Button variant="danger" onClick={this.cancelCode}>
+              Nie
+            </Button>
+          </div>
+        </div>
       </div>
     );
   }

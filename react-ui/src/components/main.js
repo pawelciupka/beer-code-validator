@@ -1,5 +1,5 @@
 import React from "react";
-import { InputGroup, FormControl, Button, Spinner } from "react-bootstrap";
+import { InputGroup, FormControl, Button } from "react-bootstrap";
 import ScannerContainer from "./scannerContainer";
 
 class Main extends React.Component {

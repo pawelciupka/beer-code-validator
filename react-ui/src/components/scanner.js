@@ -67,10 +67,10 @@ class Scanner extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="scanner-container">
         <div id="cam-container" />
         <Summary code={this.state.code} isExist={this.state.isExist} />
-      </>
+      </div>
     );
   }
 }
