@@ -1,4 +1,6 @@
-# Barberion game website
+# Beer Code Validatior
+
+Application made for Summer Boom Festival. It is designed to to scan the bar code and decide whether the participant uses the promotion.
 
 
 ## Table of contents
@@ -12,8 +14,6 @@
 * Node.js
 * React
 * MongoDB
-* HTML5
-* CSS
 * Bootstrap
 
 ## Setup
@@ -22,4 +22,4 @@
 Project is:  _in progress_.
 
 ## Contact
-Website created only by me :)
+Application created only by me :)
