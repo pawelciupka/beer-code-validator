@@ -17,9 +17,12 @@ Application made for Summer Boom Festival. It is designed to to scan the bar cod
 * Bootstrap
 
 ## Setup
+Open website.
+Password: "xd"
+Have fun :)
 
 ## Status
-Project is:  _in progress_.
+Project is:  _done_.
 
 ## Contact
 Application created only by me :)
